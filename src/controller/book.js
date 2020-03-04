@@ -28,22 +28,10 @@ module.exports ={
     },
     updateBook : (req,res)=>{
         const idbook = req.params.idbook
-        // const data = {
-        //     title : req.body.title,
-        //     author : req.body.author,
-        //     desc : req.body.description
-        // }
-        let data = {}
-        if (req.body.description == undefined){
-             data = {
-                title : req.body.title,
-                author : req.body.author,
-            }
-        }
-        else{
-            data = {
-                desc : req.body.description
-            }
+        const data = {
+            title : req.body.title,
+            author : req.body.author,
+            desc : req.body.description
         }
         // console.log(data)
         book.updateBook(data,Number(idbook))
@@ -56,7 +44,7 @@ module.exports ={
             })
     },
     deleteBook : (req,res)=>{
-        const idbook = req.body.idbook
+        const idbook = req.params.idbook
         console.log(idbook)
         book.deleteBook(Number(idbook))
             .then((result)=>{
